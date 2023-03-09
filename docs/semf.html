@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 SEMF | Inside the Atom</title>
+  <meta name="description" content="Notes for Inside the Atom" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 SEMF | Inside the Atom" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Notes for Inside the Atom" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 SEMF | Inside the Atom" />
+  
+  <meta name="twitter:description" content="Notes for Inside the Atom" />
+  
+
+<meta name="author" content="Dr Maire Gorman" />
+
+
+<meta name="date" content="2023-03-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basics.html"/>
+<link rel="next" href="radioactive-decay.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#books"><i class="fa fa-check"></i><b>0.1</b> Books</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#learning-materials"><i class="fa fa-check"></i><b>0.2</b> Learning Materials</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#course-breakdown"><i class="fa fa-check"></i><b>0.3</b> Course Breakdown</a>
+<ul>
+<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#section-a-inside-the-atom"><i class="fa fa-check"></i><b>0.3.1</b> Section A – Inside the Atom</a></li>
+<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#section-b---inside-the-nucleus"><i class="fa fa-check"></i><b>0.3.2</b> Section B - Inside the Nucleus</a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i><b>0.4</b> Learning Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>1</b> Basics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="basics.html"><a href="basics.html#preparation-exercises"><i class="fa fa-check"></i><b>1.1</b> Preparation exercises</a></li>
+<li class="chapter" data-level="1.2" data-path="basics.html"><a href="basics.html#notation-40-1"><i class="fa fa-check"></i><b>1.2</b> Notation (40-1)</a></li>
+<li class="chapter" data-level="1.3" data-path="basics.html"><a href="basics.html#units-40-1"><i class="fa fa-check"></i><b>1.3</b> Units (40-1)</a></li>
+<li class="chapter" data-level="1.4" data-path="basics.html"><a href="basics.html#avogadros-number-17-3"><i class="fa fa-check"></i><b>1.4</b> Avogadro’s Number (17-3)</a></li>
+<li class="chapter" data-level="1.5" data-path="basics.html"><a href="basics.html#mass-defect-40-1"><i class="fa fa-check"></i><b>1.5</b> Mass Defect (40-1)</a></li>
+<li class="chapter" data-level="1.6" data-path="basics.html"><a href="basics.html#binding-energy-40-1"><i class="fa fa-check"></i><b>1.6</b> Binding Energy (40-1)</a></li>
+<li class="chapter" data-level="1.7" data-path="basics.html"><a href="basics.html#summary"><i class="fa fa-check"></i><b>1.7</b> Summary</a></li>
+<li class="chapter" data-level="1.8" data-path="basics.html"><a href="basics.html#example"><i class="fa fa-check"></i><b>1.8</b> Example</a></li>
+<li class="chapter" data-level="1.9" data-path="basics.html"><a href="basics.html#problem-book-questions"><i class="fa fa-check"></i><b>1.9</b> Problem book questions</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="semf.html"><a href="semf.html"><i class="fa fa-check"></i><b>2</b> SEMF</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="semf.html"><a href="semf.html#preparation-exercises-1"><i class="fa fa-check"></i><b>2.1</b> Preparation exercises</a></li>
+<li class="chapter" data-level="2.2" data-path="semf.html"><a href="semf.html#the-semi-empirical-mass-formula"><i class="fa fa-check"></i><b>2.2</b> The Semi-Empirical Mass Formula</a></li>
+<li class="chapter" data-level="2.3" data-path="semf.html"><a href="semf.html#the-liquid-drop-model-40-1"><i class="fa fa-check"></i><b>2.3</b> The liquid drop model (40-1)</a></li>
+<li class="chapter" data-level="2.4" data-path="semf.html"><a href="semf.html#be-per-nucleon-40-3"><i class="fa fa-check"></i><b>2.4</b> BE per nucleon (40-3)</a></li>
+<li class="chapter" data-level="2.5" data-path="semf.html"><a href="semf.html#z-versus-n-40-1"><i class="fa fa-check"></i><b>2.5</b> Z versus N (40-1)</a></li>
+<li class="chapter" data-level="2.6" data-path="semf.html"><a href="semf.html#semi-empirical-mass-formula-atomic-mass-units"><i class="fa fa-check"></i><b>2.6</b> Semi-Empirical Mass Formula (atomic mass units)</a></li>
+<li class="chapter" data-level="2.7" data-path="semf.html"><a href="semf.html#semf-mev"><i class="fa fa-check"></i><b>2.7</b> SEMF (MeV)</a></li>
+<li class="chapter" data-level="2.8" data-path="semf.html"><a href="semf.html#volume-term"><i class="fa fa-check"></i><b>2.8</b> Volume Term</a></li>
+<li class="chapter" data-level="2.9" data-path="semf.html"><a href="semf.html#surface-term"><i class="fa fa-check"></i><b>2.9</b> Surface Term</a></li>
+<li class="chapter" data-level="2.10" data-path="semf.html"><a href="semf.html#coulomb-term"><i class="fa fa-check"></i><b>2.10</b> Coulomb Term</a></li>
+<li class="chapter" data-level="2.11" data-path="semf.html"><a href="semf.html#quantum-effects"><i class="fa fa-check"></i><b>2.11</b> Quantum effects</a></li>
+<li class="chapter" data-level="2.12" data-path="semf.html"><a href="semf.html#asymmetry-term"><i class="fa fa-check"></i><b>2.12</b> Asymmetry Term</a></li>
+<li class="chapter" data-level="2.13" data-path="semf.html"><a href="semf.html#pairing-term"><i class="fa fa-check"></i><b>2.13</b> Pairing Term</a></li>
+<li class="chapter" data-level="2.14" data-path="semf.html"><a href="semf.html#magic-numbers"><i class="fa fa-check"></i><b>2.14</b> Magic Numbers</a></li>
+<li class="chapter" data-level="2.15" data-path="semf.html"><a href="semf.html#summary-1"><i class="fa fa-check"></i><b>2.15</b> Summary</a></li>
+<li class="chapter" data-level="2.16" data-path="semf.html"><a href="semf.html#example-1"><i class="fa fa-check"></i><b>2.16</b> Example</a></li>
+<li class="chapter" data-level="2.17" data-path="semf.html"><a href="semf.html#problem-book-questions-1"><i class="fa fa-check"></i><b>2.17</b> Problem book questions</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="radioactive-decay.html"><a href="radioactive-decay.html"><i class="fa fa-check"></i><b>3</b> Radioactive decay</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="radioactive-decay.html"><a href="radioactive-decay.html#preparation-exercises-2"><i class="fa fa-check"></i><b>3.1</b> Preparation exercises</a></li>
+<li class="chapter" data-level="3.2" data-path="radioactive-decay.html"><a href="radioactive-decay.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="radioactive-decay.html"><a href="radioactive-decay.html#decay-rates-40-2"><i class="fa fa-check"></i><b>3.3</b> Decay Rates (40-2)</a></li>
+<li class="chapter" data-level="3.4" data-path="radioactive-decay.html"><a href="radioactive-decay.html#beta-decay"><i class="fa fa-check"></i><b>3.4</b> Beta Decay</a></li>
+<li class="chapter" data-level="3.5" data-path="radioactive-decay.html"><a href="radioactive-decay.html#beta-decay-parabolas"><i class="fa fa-check"></i><b>3.5</b> Beta decay Parabolas</a></li>
+<li class="chapter" data-level="3.6" data-path="radioactive-decay.html"><a href="radioactive-decay.html#alpha-decay"><i class="fa fa-check"></i><b>3.6</b> Alpha Decay</a></li>
+<li class="chapter" data-level="3.7" data-path="radioactive-decay.html"><a href="radioactive-decay.html#radioactive-series-40-2"><i class="fa fa-check"></i><b>3.7</b> Radioactive Series (40-2)</a></li>
+<li class="chapter" data-level="3.8" data-path="radioactive-decay.html"><a href="radioactive-decay.html#gamma-decay-40-2"><i class="fa fa-check"></i><b>3.8</b> Gamma Decay (40-2)</a></li>
+<li class="chapter" data-level="3.9" data-path="radioactive-decay.html"><a href="radioactive-decay.html#summary-2"><i class="fa fa-check"></i><b>3.9</b> Summary</a></li>
+<li class="chapter" data-level="3.10" data-path="radioactive-decay.html"><a href="radioactive-decay.html#example-2"><i class="fa fa-check"></i><b>3.10</b> Example</a></li>
+<li class="chapter" data-level="3.11" data-path="radioactive-decay.html"><a href="radioactive-decay.html#problem-book-questions-2"><i class="fa fa-check"></i><b>3.11</b> Problem book questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="fundamental-particles.html"><a href="fundamental-particles.html"><i class="fa fa-check"></i><b>4</b> Fundamental Particles</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="fundamental-particles.html"><a href="fundamental-particles.html#preparation-exercises-3"><i class="fa fa-check"></i><b>4.1</b> Preparation exercises</a></li>
+<li class="chapter" data-level="4.2" data-path="fundamental-particles.html"><a href="fundamental-particles.html#spin-10-4"><i class="fa fa-check"></i><b>4.2</b> Spin (10-4)</a></li>
+<li class="chapter" data-level="4.3" data-path="fundamental-particles.html"><a href="fundamental-particles.html#the-matter-particles-41-1"><i class="fa fa-check"></i><b>4.3</b> The Matter Particles (41-1)</a></li>
+<li class="chapter" data-level="4.4" data-path="fundamental-particles.html"><a href="fundamental-particles.html#the-standard-model-41-7"><i class="fa fa-check"></i><b>4.4</b> The Standard Model (41-7)</a></li>
+<li class="chapter" data-level="4.5" data-path="fundamental-particles.html"><a href="fundamental-particles.html#quarks-and-leptons-41-3-41-4"><i class="fa fa-check"></i><b>4.5</b> Quarks and Leptons (41-3, 41-4)</a></li>
+<li class="chapter" data-level="4.6" data-path="fundamental-particles.html"><a href="fundamental-particles.html#antiparticles-41-2"><i class="fa fa-check"></i><b>4.6</b> Antiparticles (41-2)</a></li>
+<li class="chapter" data-level="4.7" data-path="fundamental-particles.html"><a href="fundamental-particles.html#confinement-41-4"><i class="fa fa-check"></i><b>4.7</b> Confinement (41-4)</a></li>
+<li class="chapter" data-level="4.8" data-path="fundamental-particles.html"><a href="fundamental-particles.html#hadron-structure-41-4"><i class="fa fa-check"></i><b>4.8</b> Hadron Structure (41-4)</a></li>
+<li class="chapter" data-level="4.9" data-path="fundamental-particles.html"><a href="fundamental-particles.html#summary-3"><i class="fa fa-check"></i><b>4.9</b> Summary</a></li>
+<li class="chapter" data-level="4.10" data-path="fundamental-particles.html"><a href="fundamental-particles.html#example-3"><i class="fa fa-check"></i><b>4.10</b> Example</a></li>
+<li class="chapter" data-level="4.11" data-path="fundamental-particles.html"><a href="fundamental-particles.html#problem-book-questions-3"><i class="fa fa-check"></i><b>4.11</b> Problem book questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html"><i class="fa fa-check"></i><b>5</b> The fundamental forces (41-5)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#preparation-exercises-4"><i class="fa fa-check"></i><b>5.1</b> Preparation exercises</a></li>
+<li class="chapter" data-level="5.2" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#fundamental-forces-41-5"><i class="fa fa-check"></i><b>5.2</b> Fundamental Forces (41-5)</a></li>
+<li class="chapter" data-level="5.3" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#range-of-forces-41-4"><i class="fa fa-check"></i><b>5.3</b> Range of forces (41-4)</a></li>
+<li class="chapter" data-level="5.4" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#confinement-41-4-1"><i class="fa fa-check"></i><b>5.4</b> Confinement (41-4)</a></li>
+<li class="chapter" data-level="5.5" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#the-higgs-boson"><i class="fa fa-check"></i><b>5.5</b> The Higgs Boson</a></li>
+<li class="chapter" data-level="5.6" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#a-non-fundamental-force-41-5"><i class="fa fa-check"></i><b>5.6</b> A non-fundamental force (41-5)</a></li>
+<li class="chapter" data-level="5.7" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#interactions-41-3"><i class="fa fa-check"></i><b>5.7</b> Interactions (41-3)</a></li>
+<li class="chapter" data-level="5.8" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#gluonphotonz0"><i class="fa fa-check"></i><b>5.8</b> Gluon/photon/<span class="math inline">\(Z^{0}\)</span></a></li>
+<li class="chapter" data-level="5.9" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#conservation-laws"><i class="fa fa-check"></i><b>5.9</b> Conservation Laws</a></li>
+<li class="chapter" data-level="5.10" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#summary-4"><i class="fa fa-check"></i><b>5.10</b> Summary</a></li>
+<li class="chapter" data-level="5.11" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#example-4"><i class="fa fa-check"></i><b>5.11</b> Example</a></li>
+<li class="chapter" data-level="5.12" data-path="the-fundamental-forces-41-5.html"><a href="the-fundamental-forces-41-5.html#problem-book-questions-4"><i class="fa fa-check"></i><b>5.12</b> Problem book questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="beta-decay-revisited-40-2.html"><a href="beta-decay-revisited-40-2.html"><i class="fa fa-check"></i><b>6</b> Beta decay revisited (40-2)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="beta-decay-revisited-40-2.html"><a href="beta-decay-revisited-40-2.html#beta-decay-at-the-quark-level"><i class="fa fa-check"></i><b>6.1</b> Beta decay at the quark level</a></li>
+<li class="chapter" data-level="6.2" data-path="beta-decay-revisited-40-2.html"><a href="beta-decay-revisited-40-2.html#nucleon-stability"><i class="fa fa-check"></i><b>6.2</b> Nucleon Stability</a></li>
+<li class="chapter" data-level="6.3" data-path="beta-decay-revisited-40-2.html"><a href="beta-decay-revisited-40-2.html#beta-energy-spectrum"><i class="fa fa-check"></i><b>6.3</b> beta-energy spectrum</a></li>
+<li class="chapter" data-level="6.4" data-path="beta-decay-revisited-40-2.html"><a href="beta-decay-revisited-40-2.html#kurie-plots"><i class="fa fa-check"></i><b>6.4</b> Kurie Plots</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="beta-decay-revisited-40-2.html"><a href="beta-decay-revisited-40-2.html#electron-and-positron-energy-spectra-from-beta-decay-of-64cu"><i class="fa fa-check"></i><b>6.4.1</b> Electron and Positron energy spectra from <span class="math inline">\(\beta\)</span>-decay of <span class="math inline">\(^{64}Cu\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="beta-decay-revisited-40-2.html"><a href="beta-decay-revisited-40-2.html#neutrino-mass"><i class="fa fa-check"></i><b>6.5</b> Neutrino Mass</a></li>
+<li class="chapter" data-level="6.6" data-path="beta-decay-revisited-40-2.html"><a href="beta-decay-revisited-40-2.html#theory-of-beta-decay"><i class="fa fa-check"></i><b>6.6</b> Theory of beta decay</a></li>
+<li class="chapter" data-level="6.7" data-path="beta-decay-revisited-40-2.html"><a href="beta-decay-revisited-40-2.html#summary-5"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="beta-decay-revisited-40-2.html"><a href="beta-decay-revisited-40-2.html#example-5"><i class="fa fa-check"></i><b>6.8</b> Example</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Inside the Atom</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="semf" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> SEMF<a href="semf.html#semf" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="preparation-exercises-1" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Preparation exercises<a href="semf.html#preparation-exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If a nucleus, with atomic number <span class="math inline">\(Z\)</span> and mass number <span class="math inline">\(A\)</span> is a spherical “string bag” full of spherical neutrons and protons which are the same size. How you would expect the following quantities to depend on <span class="math inline">\(A\)</span> and <span class="math inline">\(Z\)</span> ?</p>
+<ul>
+<li>The total mass</li>
+<li>The volume of the bag</li>
+<li>The surface area of the bag</li>
+<li>The repulsive force between the protons</li>
+</ul>
+</div>
+<div id="the-semi-empirical-mass-formula" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> The Semi-Empirical Mass Formula<a href="semf.html#the-semi-empirical-mass-formula" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The semi empirical mass formula is a formula which attempts to describe how the mass of a nucleus depends on <span class="math inline">\(A\)</span> and <span class="math inline">\(Z\)</span>. The SEMF has a number of terms each describing one physical property. The constants multiplying
+each term are determined by fits to data on nuclear masses. Most of the principles are covered in T&amp;M 40-1 but the formula is not quoted. See <em>Williams</em> or any other nuclear physics text book. Note that since the constants are based on fits to data the exact values will depend on the data used and will therefore vary slightly.</p>
+</div>
+<div id="the-liquid-drop-model-40-1" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> The liquid drop model (40-1)<a href="semf.html#the-liquid-drop-model-40-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can scatter particles from each other and learn about their size and shape. E.g. Rutherford scattering initially indicated that the nucleus was very small.</p>
+<p>Experiments show that most nuclei are approximately spherical with radius
+<span class="math inline">\(R = R_{0}A^{1/3}\)</span>, where <span class="math inline">\(R_{0}\)</span> is a constant of order 1 <span class="math inline">\(\mathrm{fm}\)</span>. The volume of a nucleus is proportional to <span class="math inline">\(R^{3} =R_{0}^{3}A\)</span>. The mass of a nucleus is also roughly proportional to <span class="math inline">\(A\)</span> so the densities of nuclear matter in different atoms (mass/volume) are approximately the same.</p>
+<p>It is possible to visualise the nucleus as a small drop of liquid containing particles which are rather strongly
+bound to each other.</p>
+<blockquote>
+<p>Nuclei have the same interior density so mass depends on <span class="math inline">\(r^{3}\)</span> and the BE/nucleon is approximately constant.</p>
+</blockquote>
+<blockquote>
+<p>For liquid drips, the interior density doesn’t depend on drop size and the heat of vaporization is proportional to mass.</p>
+</blockquote>
+</div>
+<div id="be-per-nucleon-40-3" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> BE per nucleon (40-3)<a href="semf.html#be-per-nucleon-40-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<figure>
+<img src="Figures/L2-BE-nucleon.PNG" alt="Binding energy per nucleon plot">
+<figcaption>
+Binding energy per nucleon
+<figcaption>
+<figure>
+</div>
+<div id="z-versus-n-40-1" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Z versus N (40-1)<a href="semf.html#z-versus-n-40-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<figure>
+<img src="Figures/LE-ZN-plot.PNG" alt="ZN plot">
+<figcaption>
+Atomic number versus Number of neutrons.
+<figcaption>
+<figure>
+<p>You can make these plots for these sections yourself using the spreadsheet on the Blackboard site, these are exercises 4.5 and 4.6 in the problems book. The information is displayed in similar form in plots 40-1 and 40-3 in Tipler.</p>
+</div>
+<div id="semi-empirical-mass-formula-atomic-mass-units" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Semi-Empirical Mass Formula (atomic mass units)<a href="semf.html#semi-empirical-mass-formula-atomic-mass-units" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is the form of the SEMF in atomic mass units. Identify the following terms: Surface term, proton masses, Coulomb term, Volume term, Pairing term, Neutron masses, Asymmetry term.</p>
+<p><span class="math display">\[\begin{equation*}
+M(Z, A) = + 1.008142Z + 1.008982(A-Z) \\
+- 0.01692A  + 0.01912A^{2/3} + 0.000763\frac{Z^{2}}{A^{1/3}} + 0.10178\frac{\left(Z-\frac{A}{2}\right)^2}{A} - 0.012\frac{\delta}{A^{1/2}}
+\end{equation*}\]</span></p>
+</div>
+<div id="semf-mev" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> SEMF (MeV)<a href="semf.html#semf-mev" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[\begin{equation*}
+M(A, Z) = Zm_{p} + (A-Z)m_{n} - B(A, Z)/c^{2}
+\end{equation*}\]</span></p>
+<p><span class="math display">\[\begin{equation*}
+B(A, Z) = a_{V}A - a_{S}A^{2/3} - a_{C}\frac{Z^{2}}{A^{1/3}} - a_{A}\frac{\left(A-2Z\right)^{2}}{A} +  a_{p}\frac{\delta}{A^{1/2}}
+\end{equation*}\]</span></p>
+<p>where
+<span class="math display">\[\begin{equation*}
+\delta =
+\begin{cases}
+  +1 &amp; \text{if Z and N are even} \\
+  0 &amp; \text{if Z or N are odd} \\
+  -1 &amp; \text{if Z and N are odd}
+\end{cases}
+\end{equation*}\]</span></p>
+<p><span class="math display">\[\begin{equation*}
+a_{V} = 15.56\;\mathrm{MeV} \\
+a_{S} = 17.23\;\mathrm{MeV} \\
+a_{C} = 0.70\;\mathrm{MeV} \\
+a_{A} = 23.29\;\mathrm{MeV} \\
+a_{p} = 12.00\;\mathrm{MeV}
+\end{equation*}\]</span></p>
+</div>
+<div id="volume-term" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Volume Term<a href="semf.html#volume-term" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <em>Volume Term</em> is also known as the <em>Bulk Term</em> and arises from the observation that the BE/nucleon is approximately constant. This suggests that each nucleon is only bound to near neighbours; adding a new nucleon to the outside of a nucleus doesn’t affect the energy of those in the centre. The internucleon force is described as <em>saturated</em>.</p>
+<p>The fact that that the BE/nucleon doesn’t change indicates that the nuclear force that binds the nucleons together is short range and does not distinguish between protons and neutrons. Both the total binding energy and the volume are proportional to the number of nucleons (A).</p>
+</div>
+<div id="surface-term" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Surface Term<a href="semf.html#surface-term" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nucleons at the surface of a nucleus are not bound on all sides and therefore the binding energy for a surface nucleon is lower than for the other nucleons. There is a reduction in binding energy which is proportional to the number of nucleons on the surface of the nucleus which is, in turn, proportional to the square of the radius of the nucleus. We noted that <span class="math inline">\(R \propto A^{1/3}\)</span>, therefore <span class="math inline">\(R^{2} \propto A^{2/3}\)</span>.</p>
+</div>
+<div id="coulomb-term" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> Coulomb Term<a href="semf.html#coulomb-term" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The electrostatic repulsion between protons reduces the binding energy. The Coulomb energy of a sphere with charge <span class="math inline">\(Ze\)</span> uniformly distributed throughout and radius <span class="math inline">\(R\)</span> is</p>
+<p><span class="math display">\[\begin{equation*}
+\frac{3(Ze)^{2}}{5(4\pi \epsilon_{0})R}
+\end{equation*}\]</span></p>
+<p>(You can try and prove this for yourself – it is good practice in integration and relevant to the Fields lectures– think of the work done adding a shell of charge of thickness <span class="math inline">\(dr\)</span>)</p>
+<p>The Coulomb term is proportional to <span class="math inline">\(Z^{2}\)</span>. Increasing <span class="math inline">\(A\)</span> without increasing <span class="math inline">\(Z\)</span>, i.e. adding more neutrons to a nucleus reduces the Coulomb term because the radius of the nucleus increases and therefore the average distance between the protons increases. The Coulomb term becomes more important for higher mass nuclei and these tend to have <span class="math inline">\(N\)</span> &gt; <span class="math inline">\(Z\)</span> to reduce this term.</p>
+</div>
+<div id="quantum-effects" class="section level2 hasAnchor" number="2.11">
+<h2><span class="header-section-number">2.11</span> Quantum effects<a href="semf.html#quantum-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The terms considered so far would imply that the largest binding energy was for a nucleus with <span class="math inline">\(Z\)</span> = 0 i.e the most stable configuration would be a collection of neutrons because the attractive strong force acts on all nucleons but the repulsive electrostatic force only acts on protons.</p>
+<p>If a particle is confined it can only have discrete values for its energy (c.f. potential well). Protons and neutrons are confined in the nucleus and therefore their energies can only take certain fixed values. Protons and neutrons are governed by the Pauli exclusion principle and therefore each proton energy level can only contain two protons and each neutron energy level can only contain two neutrons. In the ground state the lowest energy levels are occupied.</p>
+</div>
+<div id="asymmetry-term" class="section level2 hasAnchor" number="2.12">
+<h2><span class="header-section-number">2.12</span> Asymmetry Term<a href="semf.html#asymmetry-term" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The most important contribution to the binding energy of a nucleus is the strong force which affects protons and neutrons equally. This means that the energy levels for protons and neutrons are very similar. If the energy levels for protons and neutrons were identical the lowest energy state would always have the same number of neutrons and protons. The asymmetry term represents the tendency to have <span class="math inline">\(N\)</span> = <span class="math inline">\(Z\)</span> = <span class="math inline">\(A/2\)</span> and is zero if this is the case.</p>
+</div>
+<div id="pairing-term" class="section level2 hasAnchor" number="2.13">
+<h2><span class="header-section-number">2.13</span> Pairing Term<a href="semf.html#pairing-term" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The energy levels for protons and neutrons are not identical because the protons experience the Coulomb force which reduces their binding energy. If the number of protons and neutrons is the same then the highest proton energy level will be higher than the highest neutron energy level. As the levels are not quite the same for protons and neutrons and each level has two particles the binding energy is usually largest when both proton and neutron levels are filled, i.e. there are an even number of protons and neutrons.</p>
+<p>Stable nuclei are more likely to occur when both <span class="math inline">\(Z\)</span> and <span class="math inline">\(N\)</span> are even (see exercise 4.6 in the problems book) i.e. protons and neutrons are most strongly bound when they are in spin up/spin down pairs. Nuclei where both the number of protons and the number of neutrons are odd tend to be unstable to beta decay.</p>
+<p>If a nucleus has odd <span class="math inline">\(A\)</span> then one of <span class="math inline">\(N\)</span> and <span class="math inline">\(Z\)</span> will be odd and one even. Odd-even nuclei have a pairing term of zero. For even <span class="math inline">\(a\)</span> nuclei, <span class="math inline">\(N\)</span> and <span class="math inline">\(Z\)</span> are either both odd or both even. The odd-odd version has the smallest binding energy and the largest mass and the sign in front of the pairing term should be chosen to make this the case.</p>
+<p><em>Note: The asymmetry term reflects the fact that the energy levels of neutrons and protons are similar. The pairing term reflects the fact that because the neutron and proton levels are slightly different it is normally energetically favourable to “finish”filling the neutron or proton level</em></p>
+<blockquote>
+<p>Common Student Error. The term odd-odd means odd N and odd Z NOT odd A and odd Z.</p>
+</blockquote>
+</div>
+<div id="magic-numbers" class="section level2 hasAnchor" number="2.14">
+<h2><span class="header-section-number">2.14</span> Magic Numbers<a href="semf.html#magic-numbers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The SEMF gives a good description of the general trends for the mass/BE in nuclei. However some nuclei show significant deviation from the average behaviour. Nuclei where <span class="math inline">\(Z\)</span> and <span class="math inline">\(N\)</span> are equal to magic numbers are found to be particularly stable. The magic numbers are 2, 8, 20, 28, (40), 50, 82 and 126. For example tin has a magic atomic number of 50 and has the largest number of stable isotopes of any element.</p>
+<figure>
+<img src="Figures/L2-Data-SEMF.PNG" alt="Data for SEMF as functioin of number of nucleons">
+<figcaption>
+Discrepancies in the SEMF
+<figcaption>
+<figure>
+</div>
+<div id="summary-1" class="section level2 hasAnchor" number="2.15">
+<h2><span class="header-section-number">2.15</span> Summary<a href="semf.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You should be able to identify and describe the origin of each of the terms in the SEMF</p>
+<p>You should be able to use the formula to</p>
+<ul>
+<li>Determine the binding energies of nuclei.</li>
+<li>Determine which isotopes are likely to be stable</li>
+</ul>
+</div>
+<div id="example-1" class="section level2 hasAnchor" number="2.16">
+<h2><span class="header-section-number">2.16</span> Example<a href="semf.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider the nuclides with <span class="math inline">\(A\)</span> = 27.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Use the semi-empirical mass formula to find the value of <span class="math inline">\(Z\)</span> for which the mass is a minimum.</li>
+<li>What does the SEMF predict for the binding energy of this nuclide?
+<span class="math display">\[\begin{equation*}
+m_{p} = 938.272\;\mathrm{MeV/c^{2}} \\
+m_{n} = 939.572\;\mathrm{MeV/c^{2}} \\
+m_{He} = 3729.402\;\mathrm{MeV/c^{2}} \\
+m_{e} = 0.511\;\mathrm{MeV/c^{2}}.
+\end{equation*}\]</span></li>
+</ol>
+</div>
+<div id="problem-book-questions-1" class="section level2 hasAnchor" number="2.17">
+<h2><span class="header-section-number">2.17</span> Problem book questions<a href="semf.html#problem-book-questions-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>4.5 and 4.6 (these are the spreadsheet exercises to produce the plots for sections 2.2 and 2.3)</li>
+<li>4.9, 4.10,4.11, 4.12.</li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="radioactive-decay.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
